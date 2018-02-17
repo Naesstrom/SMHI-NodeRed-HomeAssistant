@@ -1,0 +1,185 @@
+[
+    {
+        "id": "11aeed81.f692b2",
+        "type": "json",
+        "z": "8179525b.7711a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 360,
+        "wires": [
+            [
+                "baa66eda.c6922",
+                "7f83e5b6.806c2c"
+            ]
+        ]
+    },
+    {
+        "id": "50d8de25.c8b6",
+        "type": "http request",
+        "z": "8179525b.7711a",
+        "name": "SMHI JSON",
+        "method": "GET",
+        "url": "https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/14.938817/lat/56.826237/data.json",
+        "tls": "",
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "11aeed81.f692b2"
+            ]
+        ]
+    },
+    {
+        "id": "baa66eda.c6922",
+        "type": "debug",
+        "z": "8179525b.7711a",
+        "name": "After json",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 560,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "7f83e5b6.806c2c",
+        "type": "change",
+        "z": "8179525b.7711a",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.timeSeries[0]",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 360,
+        "wires": [
+            [
+                "56b6357d.92becc",
+                "317eed66.f0f8b2"
+            ]
+        ]
+    },
+    {
+        "id": "f43ab71.8a42d48",
+        "type": "inject",
+        "z": "8179525b.7711a",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "50d8de25.c8b6"
+            ]
+        ]
+    },
+    {
+        "id": "21e1629c.eac4ae",
+        "type": "debug",
+        "z": "8179525b.7711a",
+        "name": "Sorted",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1150,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b6cb0b27.f20948",
+        "type": "mqtt out",
+        "z": "8179525b.7711a",
+        "name": "MQTT Output",
+        "topic": "SMHI/values",
+        "qos": "0",
+        "retain": "",
+        "broker": "d5c2659b.267728",
+        "x": 1180,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "56b6357d.92becc",
+        "type": "debug",
+        "z": "8179525b.7711a",
+        "name": "Latest MESSAGE",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 920,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "317eed66.f0f8b2",
+        "type": "change",
+        "z": "8179525b.7711a",
+        "name": "Sort and change",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"msl\": payload.parameters[name=\"msl\"].values[0],\t   \"t\": payload.parameters[name=\"t\"].values[0],\t   \"vis\": payload.parameters[name=\"vis\"].values[0],\t   \"wd\": payload.parameters[name=\"wd\"].values[0],\t   \"ws\": payload.parameters[name=\"ws\"].values[0],\t   \"r\": payload.parameters[name=\"r\"].values[0],\t   \"tstm\": payload.parameters[name=\"tstm\"].values[0],\t   \"tcc_mean\": payload.parameters[name=\"tcc_mean\"].values[0],\t   \"lss_mean\": payload.parameters[name=\"lcc_mean\"].values[0],\t   \"mcc_mean\": payload.parameters[name=\"mcc_mean\"].values[0],\t   \"hcc_mean\": payload.parameters[name=\"hcc_mean\"].values[0],\t   \"gust\": payload.parameters[name=\"gust\"].values[0],\t   \"pmin\": payload.parameters[name=\"pmin\"].values[0],\t   \"pmax\": payload.parameters[name=\"pmax\"].values[0],\t   \"spp\": payload.parameters[name=\"spp\"].values[0],\t   \"pcat\": payload.parameters[name=\"pcat\"].values[0],\t   \"pmean\": payload.parameters[name=\"pmean\"].values[0],\t   \"pmedian\": payload.parameters[name=\"pmedian\"].values[0],\t   \"Wsymb2\": payload.parameters[name=\"Wsymb2\"].values[0]\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 900,
+        "y": 360,
+        "wires": [
+            [
+                "21e1629c.eac4ae",
+                "b6cb0b27.f20948"
+            ]
+        ]
+    },
+    {
+        "id": "d5c2659b.267728",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "192.168.21.10",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    }
+]
