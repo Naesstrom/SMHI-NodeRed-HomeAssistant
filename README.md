@@ -31,7 +31,7 @@ Thanks goes to these wonderful people:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| <img src="https://avatars1.githubusercontent.com/u/6575206?s=460&v=4" width="100px;"/><br /><sub><b>[Erik Näsström](https://github.com/Naesstrom)</b></sub> | <img src="https://avatars3.githubusercontent.com/u/26795429?s=460&v=4" width="100px;"/><br /><sub><b>[Torbjörn Söderberg](https://github.com/tubalainen)</b></sub> | <img src="" width="100px;"/><br /><sub><b>Johan von Lindström</b></sub>|
+| <img src="https://avatars1.githubusercontent.com/u/6575206?s=460&v=4" width="100px;"/><br /><sub><b>[Erik Näsström](https://github.com/Naesstrom)</b></sub> | <img src="https://avatars3.githubusercontent.com/u/26795429?s=460&v=4" width="100px;"/><br /><sub><b>[Torbjörn Söderberg](https://github.com/tubalainen)</b></sub> | <img src="https://avatars3.githubusercontent.com/u/2168003?s=460&v=4" width="100px;"/><br /><sub><b>[Johan von Lindström](https://github.com/bhaap)</b></sub>|
 | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification.
