@@ -1,0 +1,28 @@
+sensor.smhi_temperatur:
+    icon: mdi:temperature-celsius
+sensor.smhi_luftfuktighet:
+    icon: mdi:water-percent
+sensor.smhi_lufttryck:
+    icon: mdi:gauge
+sensor.smhi_sikt:
+    icon: mdi:mixcloud
+sensor.smhi_vindhastighet:
+    icon: mdi:weather-windy
+sensor.smhi_vindbyar:
+    icon: mdi:weather-windy
+sensor.smhi_vindriktning:
+    icon: mdi:sign-direction
+sensor.smhi_chans_for_aska:
+    icon: mdi:weather-lightning
+sensor.ksd_vindriktning_text:
+    icon: mdi:sign-direction
+sensor.ksd_vadersymboler_text:
+    icon: mdi:weather-partlycloudy
+sensor.ksd_nederbordstyp_text:
+    icon: mdi:weather-partlycloudy
+sensor.smhi_min_nederbord:
+    icon: mdi:weather-fog
+sensor.smhi_snittnederbord:
+    icon: mdi:weather-fog
+sensor.smhi_max_nederbord:
+    icon: mdi:weather-fog
